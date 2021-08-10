@@ -1,8 +1,128 @@
 import React from 'react';
-import BottomTab from './src/navigation';
+import {View, Text} from 'react-native';
 
-const whatsappclone: React.FC = () => {
-  return <BottomTab />;
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
+import Icon from 'react-native-vector-icons/Ionicons';
+
+import Chat from './src/navigation/chat';
+import Internal from './src/navigation/chat/internal';
+
+const teste = () => {
+  return (
+    <View>
+      <Text>Teste</Text>
+    </View>
+  );
 };
 
-export default whatsappclone;
+const Whatsappclone: React.FC = () => {
+  const Stack = createNativeStackNavigator();
+  const Tab = createBottomTabNavigator();
+
+  const StackChat = () => {
+    return (
+      <Stack.Navigator>
+        <Stack.Screen
+          name="StackConversas"
+          component={BottomTab}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Internal"
+          component={Internal}
+          options={{
+            headerStyle: {backgroundColor: '#171717'},
+            headerTintColor: '#29A4EB',
+            headerTitleStyle: {color: '#f5f5f5'},
+            // headerTitle: 'Chopinho',
+            // title: {props.name.toString()},
+          }}
+        />
+      </Stack.Navigator>
+    );
+  };
+
+  const BottomTab = () => {
+    return (
+      <Tab.Navigator
+        initialRouteName="Conversas"
+        screenOptions={{
+          tabBarStyle: {
+            backgroundColor: '#171717',
+            borderTopColor: 'transparent',
+            height: 60,
+            paddingTop: 5,
+            paddingBottom: 5,
+          },
+        }}>
+        <Tab.Screen
+          name="Status"
+          component={teste}
+          options={{
+            headerShown: false,
+            tabBarLabel: 'Status',
+            tabBarIcon: ({color, size}) => (
+              <Icon name="ios-sync" size={30} color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Ligações"
+          component={teste}
+          options={{
+            headerShown: false,
+            tabBarLabel: 'Ligações',
+            tabBarIcon: ({color, size}) => (
+              <Icon name="ios-call-sharp" size={30} color={color} />
+            ),
+          }}
+        />
+
+        <Tab.Screen
+          name="Câmera"
+          component={teste}
+          options={{
+            headerShown: false,
+            tabBarLabel: 'Câmera',
+            tabBarIcon: ({color, size}) => (
+              <Icon name="ios-camera" size={30} color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Conversas"
+          component={Chat}
+          options={{
+            headerShown: false,
+            tabBarLabel: 'Conversas',
+            tabBarIcon: ({color, size}) => (
+              <Icon name="ios-chatbubbles" size={30} color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Configurações"
+          component={teste}
+          options={{
+            headerShown: false,
+            tabBarLabel: 'Configurações',
+            tabBarIcon: ({color, size}) => (
+              <Icon name="settings" size={30} color={color} />
+            ),
+          }}
+        />
+      </Tab.Navigator>
+    );
+  };
+  return (
+    <NavigationContainer>
+      <StackChat />
+      {/* <BottomTab /> */}
+    </NavigationContainer>
+  );
+};
+
+export default Whatsappclone;
