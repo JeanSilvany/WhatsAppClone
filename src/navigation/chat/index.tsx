@@ -62,11 +62,11 @@ const data = [
   },
 ];
 
-const home: React.FC = () => {
+const Chat: React.FC = ({navigation}, props) => {
   const renderItem = ({item}) => (
     <TouchableOpacity
+      onPress={() => navigation.navigate('Internal', {data: item})}
       style={{
-        // backgroundColor: '#343434',
         flexDirection: 'row',
         height: 100,
       }}>
@@ -127,4 +127,4 @@ const home: React.FC = () => {
   );
 };
 
-export default home;
+export default Chat;
