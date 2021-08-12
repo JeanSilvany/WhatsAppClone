@@ -37,8 +37,9 @@ const Whatsappclone: React.FC = () => {
             headerStyle: {backgroundColor: '#171717'},
             headerTintColor: '#29A4EB',
             headerTitleStyle: {color: '#f5f5f5'},
-            // headerTitle: 'Chopinho',
-            // title: {props.name.toString()},
+
+            //   // headerTitle: () => route.params
+            //   // title:{{data.name.toString()}}
           }}
         />
       </Stack.Navigator>
@@ -110,7 +111,7 @@ const Whatsappclone: React.FC = () => {
             headerShown: false,
             tabBarLabel: 'Configurações',
             tabBarIcon: ({color, size}) => (
-              <Icon name="settings" size={30} color={color} />
+              <Icon name="ios-cog-outline" size={30} color={color} />
             ),
           }}
         />
