@@ -11,59 +11,90 @@ import TopMenu from './topMenu';
 import styles from './styles';
 import TopSettings from './topMenu/topSettings';
 
+interface data {
+  img: string;
+  name: string;
+  chat: string;
+  chat2: string;
+  chat3: string;
+  hour: string;
+}
+
 const data = [
   {
     img: 'https://hadikarimi.com/wp-content/uploads/2020/06/Chopin-2.jpg',
     name: 'Frédéric Chopin',
-    chat: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita asperiores iure voluptatibus id reiciendis nam, molestias odio officia eius culpa illum rerum perferendis, explicabo alias nesciunt ducimus. Nihil, temporibus voluptatum?',
+    chat: 'Do you like Chopin?',
+    chat2: 'What do you think of the Digital Piano?',
+    chat3: 'Try playing Chopin Nocturne Opus 9 N2',
     hour: '05:01',
   },
   {
     img: 'http://s2.glbimg.com/i8rkVK9Tz3l73QYR5QJ1Z1tEorMwoFAWO93Zvis4Lr5by86xufIspNYIE32UnjrC/e.glbimg.com/og/ed/f/original/2013/08/29/eduardo_ferraz.jpg',
     name: 'Pedro Albuquerque',
-    chat: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita asperiores iure voluptatibus id reiciendis nam, molestias odio officia eius culpa illum rerum perferendis, explicabo alias nesciunt ducimus. Nihil, temporibus voluptatum?',
+    chat: 'Dream without fear, love without limits.',
+    chat2: 'Be heroes of your own stories.',
+    chat3:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita asperiores iure voluptatibus id reiciendis nam, molestias odio officia eius culpa illum rerum perferendis, explicabo alias nesciunt ducimus. Nihil, temporibus voluptatum?',
     hour: 'Ontem',
   },
   {
     img: 'https://jeonline.com.br/site/uploads/posts/10282_22022017140756.jpg',
     name: 'Camila Dajonus',
-    chat: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita asperiores iure voluptatibus id reiciendis nam, molestias odio officia eius culpa illum rerum perferendis, explicabo alias nesciunt ducimus. Nihil, temporibus voluptatum?',
+    chat: 'Hi!',
+    chat2: 'How are you?',
+    chat3:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita asperiores iure voluptatibus id reiciendis nam, molestias odio officia eius culpa illum rerum perferendis, explicabo alias nesciunt ducimus. Nihil, temporibus voluptatum?',
     hour: '02/04',
   },
   {
     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0b8205RPU3RsEb6rT8ilNCjhAFhdtn9U6hg&usqp=CAU',
     name: 'Edgar Fresno',
-    chat: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita asperiores iure voluptatibus id reiciendis nam, molestias odio officia eius culpa illum rerum perferendis, explicabo alias nesciunt ducimus. Nihil, temporibus voluptatum?',
+    chat: 'Hello!',
+    chat2: 'Where are you from?',
+    chat3:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita asperiores iure voluptatibus id reiciendis nam, molestias odio officia eius culpa illum rerum perferendis, explicabo alias nesciunt ducimus. Nihil, temporibus voluptatum?',
     hour: '14:20',
   },
   {
     img: 'https://projetandopessoas.com.br/wp-content/uploads/2015/01/unnamed5.jpg',
     name: 'Roberta Diamond',
-    chat: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita asperiores iure voluptatibus id reiciendis nam, molestias odio officia eius culpa illum rerum perferendis, explicabo alias nesciunt ducimus. Nihil, temporibus voluptatum?',
+    chat: 'Could you help me, please?',
+    chat2: 'Please!!!',
+    chat3:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita asperiores iure voluptatibus id reiciendis nam, molestias odio officia eius culpa illum rerum perferendis, explicabo alias nesciunt ducimus. Nihil, temporibus voluptatum?',
     hour: '15:54',
   },
   {
     img: 'https://picsum.photos/1920/1080',
     name: 'Carlos Fernando',
-    chat: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita asperiores iure voluptatibus id reiciendis nam, molestias odio officia eius culpa illum rerum perferendis, explicabo alias nesciunt ducimus. Nihil, temporibus voluptatum?',
+    chat: 'Are you ready?',
+    chat2: 'What do you think of the Digital Piano?',
+    chat3:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita asperiores iure voluptatibus id reiciendis nam, molestias odio officia eius culpa illum rerum perferendis, explicabo alias nesciunt ducimus. Nihil, temporibus voluptatum?',
     hour: '19:34',
   },
   {
     img: 'https://static1.dermaclub.com.br/articles/7/52/27/@/11757-xxx-article_media_header_mobile-2.jpg',
     name: 'Meliodas Antonio',
-    chat: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita asperiores iure voluptatibus id reiciendis nam, molestias odio officia eius culpa illum rerum perferendis, explicabo alias nesciunt ducimus. Nihil, temporibus voluptatum?',
+    chat: 'Join me!',
+    chat2: 'U$5.000 for month!',
+    chat3:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita asperiores iure voluptatibus id reiciendis nam, molestias odio officia eius culpa illum rerum perferendis, explicabo alias nesciunt ducimus. Nihil, temporibus voluptatum?',
     hour: 'Ontem',
   },
   {
     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtmvuBWlh6A-_HRYTQJUWh2i0CtPtLZ_QZkw&usqp=CAU',
     name: 'Ibrahim Dajani',
-    chat: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita asperiores iure voluptatibus id reiciendis nam, molestias odio officia eius culpa illum rerum perferendis, explicabo alias nesciunt ducimus. Nihil, temporibus voluptatum?',
+    chat: 'Eu sou amigo do Maverick.',
+    chat2: 'Pedro também é o meu amigo... E eles só ensinam a mim 😍',
+    chat3: 'Nós 3 vamos nos ajudar para sempre! ❤',
     hour: '15:55',
   },
 ];
 
-const Chat: React.FC = ({navigation}, props) => {
-  const renderItem = ({item}) => (
+const Chat: React.FC = ({navigation}: any) => {
+  const renderItem = ({item}: any) => (
     <TouchableOpacity
       onPress={() => navigation.navigate('Internal', {data: item})}
       style={{
