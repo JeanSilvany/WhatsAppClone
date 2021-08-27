@@ -13,10 +13,10 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
 
 const Internal: React.FC = ({route, navigation}: any) => {
-  const {data} = route.params;
-
+  const {item} = route.params;
+  console.log({item});
   React.useLayoutEffect(() => {
-    navigation.setOptions({headerTitle: data.name});
+    navigation.setOptions({headerTitle: item.name});
   }, []);
 
   return (
@@ -27,50 +27,12 @@ const Internal: React.FC = ({route, navigation}: any) => {
         style={{flex: 1, justifyContent: 'center'}}>
         <View style={styles.container}>
           <ScrollView>
-            <View style={styles.boxText}>
-              <Text style={styles.text}>{data.chat}</Text>
-              <Text style={styles.textHour}>{data.hour}</Text>
-            </View>
-            <View style={styles.boxText}>
-              <Text style={styles.text}>{data.chat2}</Text>
-              <Text style={styles.textHour}>{data.hour}</Text>
-            </View>
-            <View style={styles.boxText}>
-              <Text style={styles.text}>{data.chat3}</Text>
-              <Text style={styles.textHour}>{data.hour}</Text>
-            </View>
-            <View style={styles.boxText}>
-              <Text style={styles.text}>{data.chat3}</Text>
-              <Text style={styles.textHour}>{data.hour}</Text>
-            </View>
-            <View style={styles.boxText}>
-              <Text style={styles.text}>{data.chat3}</Text>
-              <Text style={styles.textHour}>{data.hour}</Text>
-            </View>
-            <View style={styles.boxText}>
-              <Text style={styles.text}>{data.chat3}</Text>
-              <Text style={styles.textHour}>{data.hour}</Text>
-            </View>
-            <View style={styles.boxText}>
-              <Text style={styles.text}>{data.chat3}</Text>
-              <Text style={styles.textHour}>{data.hour}</Text>
-            </View>
-            <View style={styles.boxText}>
-              <Text style={styles.text}>{data.chat3}</Text>
-              <Text style={styles.textHour}>{data.hour}</Text>
-            </View>
-            <View style={styles.boxText}>
-              <Text style={styles.text}>{data.chat3}</Text>
-              <Text style={styles.textHour}>{data.hour}</Text>
-            </View>
-            <View style={styles.boxText}>
-              <Text style={styles.text}>{data.chat3}</Text>
-              <Text style={styles.textHour}>{data.hour}</Text>
-            </View>
-            <View style={styles.boxText}>
-              <Text style={styles.text}>{data.chat3}</Text>
-              <Text style={styles.textHour}>{data.hour}</Text>
-            </View>
+            {item.chat.map((element, index): any => (
+              <View key={`element-${index}`} style={styles.boxText}>
+                <Text style={styles.text}>{element}</Text>
+                <Text style={styles.textHour}>{element.hour}</Text>
+              </View>
+            ))}
           </ScrollView>
         </View>
       </ImageBackground>
