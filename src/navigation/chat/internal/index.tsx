@@ -6,6 +6,7 @@ import {
   ScrollView,
   TouchableOpacity,
   TextInput,
+  Image,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -15,8 +16,28 @@ import styles from './styles';
 const Internal: React.FC = ({route, navigation}: any) => {
   const {item} = route.params;
   console.log({item});
+
   React.useLayoutEffect(() => {
-    navigation.setOptions({headerTitle: item.name});
+    navigation.setOptions({
+      headerTitle: () => (
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <TouchableOpacity>
+            <Image
+              source={{uri: item.img}}
+              style={{
+                width: 40,
+                height: 40,
+                marginRight: 10,
+                borderRadius: 999,
+              }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={{color: 'white', fontSize: 20}}>{item.name}</Text>
+          </TouchableOpacity>
+        </View>
+      ),
+    });
   }, []);
 
   return (
@@ -30,7 +51,7 @@ const Internal: React.FC = ({route, navigation}: any) => {
             {item.chat.map((element, index): any => (
               <View key={`element-${index}`} style={styles.boxText}>
                 <Text style={styles.text}>{element}</Text>
-                <Text style={styles.textHour}>{element.hour}</Text>
+                <Text style={styles.textHour}>{item.hour}</Text>
               </View>
             ))}
           </ScrollView>

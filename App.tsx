@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -37,7 +37,21 @@ const Whatsappclone: React.FC = () => {
             headerStyle: {backgroundColor: '#171717'},
             headerTintColor: '#29A4EB',
             headerTitleStyle: {color: '#f5f5f5'},
-
+            headerRight: () => (
+              <View style={{flexDirection: 'row'}}>
+                <TouchableOpacity>
+                  <Icon
+                    style={{paddingHorizontal: 15}}
+                    name="ios-videocam-outline"
+                    size={32}
+                    color={'#29A4EB'}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <Icon name="ios-call-outline" size={28} color={'#29A4EB'} />
+                </TouchableOpacity>
+              </View>
+            ),
             //   // headerTitle: () => route.params
             //   // title:{{data.name.toString()}}
           }}
@@ -77,7 +91,7 @@ const Whatsappclone: React.FC = () => {
             headerShown: false,
             tabBarLabel: 'Ligações',
             tabBarIcon: ({color, size}) => (
-              <Icon name="ios-call-sharp" size={30} color={color} />
+              <Icon name="ios-call-outline" size={30} color={color} />
             ),
           }}
         />
@@ -89,7 +103,7 @@ const Whatsappclone: React.FC = () => {
             headerShown: false,
             tabBarLabel: 'Câmera',
             tabBarIcon: ({color, size}) => (
-              <Icon name="ios-camera" size={30} color={color} />
+              <Icon name="ios-camera-outline" size={30} color={color} />
             ),
           }}
         />

@@ -105,6 +105,7 @@ const data = [
 
 const Chat: React.FC = ({navigation}: any) => {
   const [dataChat, setDataChat] = useState(data);
+
   const renderItem = ({item, index}: any) => (
     <TouchableOpacity
       onPress={() => navigation.navigate('Internal', {item, index})}
