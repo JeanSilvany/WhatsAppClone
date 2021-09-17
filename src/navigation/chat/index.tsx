@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   StatusBar,
@@ -6,6 +6,8 @@ import {
   Text,
   Image,
   TouchableOpacity,
+  Keyboard,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import TopMenu from './topMenu';
 import styles from './styles';
@@ -14,9 +16,7 @@ import TopSettings from './topMenu/topSettings';
 interface data {
   img: string;
   name: string;
-  chat: string;
-  chat2: string;
-  chat3: string;
+  // chat: [];
   hour: string;
 }
 
@@ -105,6 +105,20 @@ const data = [
 
 const Chat: React.FC = ({navigation}: any) => {
   const [dataChat, setDataChat] = useState(data);
+  const [search, setSearch] = useState('');
+  console.log(search);
+
+  useEffect(() => {
+    if (search === '') {
+      setDataChat(data);
+    } else {
+      setDataChat(
+        dataChat.filter(
+          item => item.name.toLowerCase().indexOf(search.toLowerCase()) > -1,
+        ),
+      );
+    }
+  }, [search]);
 
   const renderItem = ({item, index}: any) => (
     <TouchableOpacity
@@ -151,22 +165,24 @@ const Chat: React.FC = ({navigation}: any) => {
   );
 
   return (
-    <View style={styles.container}>
-      <StatusBar backgroundColor={'#010101'} barStyle={'dark-content'} />
-      <TopMenu />
-      <TopSettings />
-      <View
-        style={{
-          borderBottomColor: '#7D7D80',
-          borderBottomWidth: 0.2,
-        }}
-      />
-      <FlatList
-        data={dataChat}
-        renderItem={renderItem}
-        keyExtractor={(item, index) => index.toString()}
-      />
-    </View>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={styles.container}>
+        <StatusBar backgroundColor={'#010101'} barStyle={'dark-content'} />
+        <TopMenu />
+        <TopSettings info={{setSearch, search}} />
+        <View
+          style={{
+            borderBottomColor: '#7D7D80',
+            borderBottomWidth: 0.2,
+          }}
+        />
+        <FlatList
+          data={dataChat}
+          renderItem={renderItem}
+          keyExtractor={(item, index) => index.toString()}
+        />
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 

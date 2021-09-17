@@ -4,9 +4,7 @@ import Feather from 'react-native-vector-icons/Feather';
 
 import styles from './styles';
 
-const TopSettings: React.FC = () => {
-  const [search, setSearch] = useState('');
-  console.log(search);
+const TopSettings: React.FC = ({info}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.mainText}>Conversas</Text>
@@ -14,7 +12,7 @@ const TopSettings: React.FC = () => {
         <Feather name="search" size={24} color="#88878A" style={styles.icon} />
         <TextInput
           style={styles.input}
-          onChangeText={element => setSearch(element)}
+          onChangeText={element => info.setSearch(element)}
         />
       </View>
       <View style={styles.listContainer}>
